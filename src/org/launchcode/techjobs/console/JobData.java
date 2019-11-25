@@ -84,12 +84,17 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
         value = value.toLowerCase();
+
         for (HashMap<String, String> row : allJobs) {
+//           * below searches each CELL *
             for (Map.Entry<String, String> column: row.entrySet()){
                 String jobListing = column.getValue().toLowerCase();
-                if (jobListing.contains(value.toLowerCase())) {
-                    jobs.add(row);
+                if (!jobs.contains(row)){
+                    if (jobListing.contains(value.toLowerCase())) {
+                        jobs.add(row);
+                    }
                 }
             }
         }
